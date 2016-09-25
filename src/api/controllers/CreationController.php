@@ -4,6 +4,8 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+require '/models/CreationManager.php';
+
 class CreationController
 {
     protected $ci;
@@ -12,10 +14,21 @@ class CreationController
         $this->ci = $ci;
     }
 
+    public function index(Request $request, Response $response, $args)
+    {
+        $creationManager = new CreationManager($this->ci);
+        $creations = $creationManager->findAll();
+
+        return $response->withJson($creations);
+    }
+
     public function view(Request $request, Response $response, $args)
     {
-        $name = $request->getAttribute('name');
-        $response->getBody()->write("Hello, $name");
+        $slug = $request->getAttribute('slug');
+        $creationManager = new CreationManager($this->ci);
+        $creation = $creationManager->findOneBySlug($slug);
+
+        return $response->withJson($creation);
 
         return $response;
     }
