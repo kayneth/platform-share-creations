@@ -16,7 +16,7 @@ class CreationManager
     {
          $objs = array();  
             //
-            $q = $this->db->query('SELECT id_creation, title, slug FROM creation');
+            $q = $this->db->query('SELECT id_creation, title, slug, description FROM creation');
             while ($donnees = $q->fetch())
             {
                 $objs[] = new Creation($donnees);
@@ -26,8 +26,9 @@ class CreationManager
     
     public function findOneBySlug($slug)
     {
-        $q = $this->db->prepare('SELECT id_creation, title, slug FROM creation WHERE slug=?');
+        $q = $this->db->prepare('SELECT id_creation, title, slug, description FROM creation WHERE slug=?');
         $q->execute(array($slug));
+        //verifier le type de $q pour renvoyer un NotFoundException !!!
         $obj = new Creation($q->fetch());
         return $obj;
     }

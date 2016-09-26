@@ -20,7 +20,7 @@ class Creation implements JsonSerializable
         if(isset($datas['slug'])) $this->slug = $datas['slug'];
         if(isset($datas['file'])) $this->file = $datas['file'];
         if(isset($datas['link'])) $this->link = $datas['link'];
-        if(isset($datas['description'])) $this->description = $datas['id_creation'];
+        if(isset($datas['description'])) $this->description = $datas['description'];
         if(isset($datas['created_at'])) $this->createdAt = $datas['created_at'];
         if(isset($datas['updated_at'])) $this->updatedAt = $datas['updated_at'];
         if(isset($datas['id_user'])) $this->user = $datas['id_user'];
@@ -31,7 +31,12 @@ class Creation implements JsonSerializable
         $data = array(
             'id' => $this->id,
             'title' => $this->title,
-            'slug' => $this->slug
+            'slug' => $this->slug,
+            'file' => $this->file,
+            'description' => $this->description,
+            'createdAt' => $this->createdAt,
+            'user' => $this->user,
+            'category' => $this->category
         );
         return $data;
     }
