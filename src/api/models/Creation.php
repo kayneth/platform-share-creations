@@ -28,17 +28,13 @@ class Creation implements JsonSerializable
     }
     
     function jsonSerialize() {
-        $data = array(
-            'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'file' => $this->file,
-            'description' => $this->description,
-            'createdAt' => $this->createdAt,
-            'user' => $this->user,
-            'category' => $this->category
-        );
-        return $data;
+        $var = get_object_vars($this);
+        foreach ($var as &$value) {
+            if (is_object($value) && method_exists($value,'getJsonData')) {
+                $value = $value->getJsonData();
+            }
+        }
+        return $var;
     }
 
     public function getId() {

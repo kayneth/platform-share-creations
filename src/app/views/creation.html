@@ -1,0 +1,17 @@
+<md-card>
+    <md-card-title>
+        <md-card-text>
+            Projet : {{ creation.title }}
+        </md-card-text>
+    </md-card-title>
+    <md-divider></md-divider>
+    <md-card-content>
+        <p ng-if="creation.link">
+            Lien vers le projet : {{creation.link}}
+        </p>
+        <p ng-else>Aucun lien vers la source</p>
+        <p>
+            {{ creation.description }}
+        </p>
+    </md-card-content>
+</md-card>

@@ -1,7 +1,8 @@
-app.controller('CreationCtrl', function CreationCtrl($scope, $http){
-   $scope.creations = {};
+app.controller('CreationCtrl', function CreationCtrl($scope, $http, $rootScope, $routeParams){
+    $scope.creation = {};
+    $scope.params = $routeParams;
 
-   $http.get('http://localhost/man/src/api/index.php/creation').success(function(data) {
-      $scope.creations = data;
+   $http.get($rootScope.api+'creation/'+$scope.params.slug).success(function(data) {
+      $scope.creation = data;
     });
 });

@@ -29,7 +29,14 @@ class CreationController
         $creation = $creationManager->findOneBySlug($slug);
 
         return $response->withJson($creation);
+    }
 
-        return $response;
+    public function add(Request $request, Response $response, $args)
+    {
+        $data = $request->getParsedBody();
+        $creation = new Creation($data);
+        $creationManager = new CreationManager($this->ci);
+        $creation = $creationManager->add($creation);
+        return $response->withJson($creation);
     }
 }

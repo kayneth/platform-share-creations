@@ -1,0 +1,31 @@
+<md-content layout-padding>
+    <form name="projectForm">
+        <md-input-container class="md-block">
+            <label>Titre</label>
+            <input required name="title" ng-model="creation.title">
+            <div ng-messages="projectForm.userName.$error">
+                <div ng-message="required">Ce champ est obligatoire</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Email</label>
+            <input required type="email" name="userEmail" ng-model="project.userEmail"
+                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+            <div ng-messages="projectForm.userEmail.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Ce mail doit être valide
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Description</label>
+            <textarea required name="description" ng-model="creation.description"></textarea>
+            <div ng-messages="projectForm.comments.$error">
+                <div ng-message="required">Ce champ est obligatoire</div>
+                <div ng-message="md-maxlength">Ce champ doit être de 300 charactères minimum</div>
+            </div>
+        </md-input-container>
+
+        <md-button>Ajouter</md-button>
+    </form>
+</md-content>

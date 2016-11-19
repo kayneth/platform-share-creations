@@ -10,10 +10,18 @@ angular.
 		})
 		.when('/creations', {
 			templateUrl: 'views/creations.html',
+			controller: 'CreationsCtrl'
+		})
+		.when('/creation/:slug', {
+			templateUrl: 'views/creation.html',
 			controller: 'CreationCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
 		});
 	}
-]);
+])
+.run(function($rootScope) {
+	$rootScope.api = "http://localhost/man/src/api/index.php/";
+})
+;
