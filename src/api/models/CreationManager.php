@@ -1,5 +1,5 @@
 <?php
-require_once("models/Creation.php");
+require_once("Creation.php");
 
 class CreationManager
 {

@@ -1,6 +1,7 @@
-app.controller('NavbarCtrl', function NavbarCtrl($scope, $http, $rootScope, $mdDialog){
+app.controller('NavbarCtrl', function NavbarCtrl($scope, $http, $rootScope, $mdDialog, $timeout){
 
     $scope.creation = {};
+    $scope.categories = null;
 
     $scope.showAddCrea = function($event){
         $mdDialog.show({
@@ -21,4 +22,10 @@ app.controller('NavbarCtrl', function NavbarCtrl($scope, $http, $rootScope, $mdD
             $scope.creation = data;
         });
     };
+
+    $scope.loadCategories = function () {
+        $http.get($rootScope.api + 'category').success(function (data) {
+            $scope.categories = data;
+        });
+    }
 });

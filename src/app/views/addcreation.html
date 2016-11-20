@@ -1,31 +1,36 @@
 <md-content layout-padding>
     <form name="projectForm">
+
         <md-input-container class="md-block">
             <label>Titre</label>
             <input required name="title" ng-model="creation.title">
-            <div ng-messages="projectForm.userName.$error">
+            <div ng-messages="projectForm.title.$error">
                 <div ng-message="required">Ce champ est obligatoire</div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
-            <label>Email</label>
-            <input required type="email" name="userEmail" ng-model="project.userEmail"
-                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-            <div ng-messages="projectForm.userEmail.$error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                    Ce mail doit être valide
-                </div>
+            <label>Image de Présentation</label>
+            <input required name="file" ng-model="creation.file">
+            <div ng-messages="projectForm.file.$error">
+                <div ng-message="required">Ce champ est obligatoire</div>
             </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Lien</label>
+            <input name="file" ng-model="creation.link">
         </md-input-container>
         <md-input-container class="md-block">
             <label>Description</label>
             <textarea required name="description" ng-model="creation.description"></textarea>
             <div ng-messages="projectForm.comments.$error">
                 <div ng-message="required">Ce champ est obligatoire</div>
-                <div ng-message="md-maxlength">Ce champ doit être de 300 charactères minimum</div>
             </div>
         </md-input-container>
+        <md-select placeholder="Choississez une catégorie" ng-model="creation.category" md-on-open="loadCategories()" style="min-width: 200px;">
+            <md-option ng-value="category" ng-repeat="category in categories">{{category.title}}</md-option>
+        </md-select>
+        <p class="md-caption">Vous avez choisi comme catégorie : {{ creation.category ? creation.category.title : 'Aucune' }}</p>
 
-        <md-button>Ajouter</md-button>
+        <md-button ng-click="addCreation()">Ajouter</md-button>
     </form>
 </md-content>
