@@ -18,8 +18,9 @@ app.controller('NavbarCtrl', function NavbarCtrl($scope, $http, $rootScope, $mdD
     };
 
     $scope.addCreation = function() {
-        $http.post($rootScope.api + 'creation/' + $scope.params.slug).success(function (data) {
+        $http.post($rootScope.api + 'creation', $scope.creation).success(function (data) {
             $scope.creation = data;
+            console.log($scope.creation);
         });
     };
 
@@ -27,5 +28,6 @@ app.controller('NavbarCtrl', function NavbarCtrl($scope, $http, $rootScope, $mdD
         $http.get($rootScope.api + 'category').success(function (data) {
             $scope.categories = data;
         });
+        console.log($scope.creation);
     }
 });

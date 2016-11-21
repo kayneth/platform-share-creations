@@ -111,7 +111,7 @@ slug</columns>
       </foreign-key>
       <foreign-key id="37" parent="14" name="FK_Comment_id_comment_1">
         <columns>id_response</columns>
-        <ref-key>PRIMARY</ref-key>
+        <ref-key>~.category.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>

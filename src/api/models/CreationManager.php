@@ -35,15 +35,14 @@ class CreationManager
 
     public function add($creation)
     {
-        $q = $this->db->prepare('INSERT INTO creation (iduser, title, slug, file, description, created_at id_category) VALUES(:idUser :title, :slug, :file, :description, :createdAt, :idCategory)');
+        $q = $this->db->prepare('INSERT INTO creation (iduser, title, slug, file, description, created_at id_category) VALUES(:idUser :title, :slug, :file, :description, NOW(), :idCategory)');
         $q->execute(array(
-            'idUser' => $creation->getUser()->getId(),
+            'idUser' => 1/*$creation->getUser()->getId()*/,
             'title' => $creation->getTitle(),
             'slug' => $creation->getSlug(),
-            'file' => $creation->getFilename(),
+            'file' => 'filename.jpg'/*$creation->getFilename()*/,
             'description' => $creation->getDescription(),
-            'createdAt' => $creation->getCreatedAt(),
-            'idCategory' => $creation->getCategory()->getId()
+            'idCategory' => 1/*$creation->getCategory()->getId()*/
         ));
 
         return true;

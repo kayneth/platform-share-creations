@@ -21,7 +21,7 @@ class Creation implements JsonSerializable
         if(isset($datas['file'])) $this->file = $datas['file'];
         if(isset($datas['link'])) $this->link = $datas['link'];
         if(isset($datas['description'])) $this->description = $datas['description'];
-        if(isset($datas['created_at'])) $this->createdAt = $datas['created_at'];
+        if(isset($datas['created_at'])){$this->createdAt = $datas['created_at'];}else{$this->createdAt = new DateTime();}
         if(isset($datas['updated_at'])) $this->updatedAt = $datas['updated_at'];
         if(isset($datas['id_user'])) $this->user = $datas['id_user'];
         if(isset($datas['id_category'])) $this->category = $datas['id_category'];

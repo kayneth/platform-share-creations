@@ -10,14 +10,14 @@
         </md-input-container>
         <md-input-container class="md-block">
             <label>Image de Présentation</label>
-            <input required name="file" ng-model="creation.file">
+            <input required name="file" type="file" file-model="creation.file">
             <div ng-messages="projectForm.file.$error">
                 <div ng-message="required">Ce champ est obligatoire</div>
             </div>
         </md-input-container>
         <md-input-container class="md-block">
             <label>Lien</label>
-            <input name="file" ng-model="creation.link">
+            <input name="link" ng-model="creation.link">
         </md-input-container>
         <md-input-container class="md-block">
             <label>Description</label>
