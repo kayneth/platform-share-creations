@@ -35,7 +35,7 @@ class CreationManager
 
     public function add($creation)
     {
-        $q = $this->db->prepare('INSERT INTO creation (iduser, title, slug, file, description, created_at id_category) VALUES(:idUser :title, :slug, :file, :description, NOW(), :idCategory)');
+        $q = $this->db->prepare('INSERT INTO creation (id_user, title, slug, file, description, created_at, id_category) VALUES(:idUser, :title, :slug, :file, :description, NOW(), :idCategory)');
         $q->execute(array(
             'idUser' => 1/*$creation->getUser()->getId()*/,
             'title' => $creation->getTitle(),
