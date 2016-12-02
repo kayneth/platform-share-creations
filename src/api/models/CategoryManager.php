@@ -16,7 +16,7 @@ class CategoryManager
     {
         $objs = array();
         //
-        $q = $this->db->query('SELECT id_category, title, slug FROM category');
+        $q = $this->db->query('SELECT id_category, title, slug FROM Category');
         while ($donnees = $q->fetch())
         {
             $objs[] = new Category($donnees);
@@ -26,7 +26,7 @@ class CategoryManager
 
     public function findOneBySlug($slug)
     {
-        $q = $this->db->prepare('SELECT id_category, title, slug FROM category WHERE slug=?');
+        $q = $this->db->prepare('SELECT id_category, title, slug FROM Category WHERE slug=?');
         $q->execute(array($slug));
         //verifier le type de $q pour renvoyer un NotFoundException !!!
         $obj = new Category($q->fetch());
@@ -35,7 +35,7 @@ class CategoryManager
 
     public function add($category)
     {
-        $q = $this->db->prepare('INSERT INTO category (id_category, title, slug) VALUES(:idCategory, :title, :slug)');
+        $q = $this->db->prepare('INSERT INTO Category (id_category, title, slug) VALUES(:idCategory, :title, :slug)');
         $q->execute(array(
             'idCategory' => $category->getId(),
             'title' => $category->getTitle(),

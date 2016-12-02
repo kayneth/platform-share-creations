@@ -22,6 +22,6 @@ angular.
 	}
 ])
 .run(function($rootScope) {
-	$rootScope.api = "http://localhost/man/src/api/index.php/";
+	$rootScope.api = "http://localhost/public/man/src/api/index.php/";
 })
 ;
