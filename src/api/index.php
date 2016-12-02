@@ -19,6 +19,23 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
+
+$container["jwt"] = function ($container) {
+    return new StdClass;
+};
+
+// JWT Middleware
+$app->add(new \Slim\Middleware\JwtAuthentication([
+    //"path" => "/api",
+    //"passthrough" => ["/api/token"],
+    "secure" => true,
+    "relaxed" => ["localhost"],
+    "secret" => "manApiProjectLPMulti2016",
+    "callback" => function ($request, $response, $arguments) use ($container) {
+        $container["jwt"] = $arguments["decoded"];
+    }
+]));
+
 //Mes routes
 require 'routes/routing.php';
 //lancement de l'application
